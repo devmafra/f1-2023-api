@@ -1,0 +1,17 @@
+{
+  "name": "api-formula1-2023",
+  "version": "1.0.0",
+  "description": "Projeto de uma API que entrega os dados da competição de fórmula 1 do ano de 2023",
+  "license": "ISC",
+  "author": "Davi Mafra",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch ."
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "joi": "^18.0.2"
+  }
+}
