@@ -11,10 +11,16 @@ app.use(express.json());
 app.use(baseAPIRoute + "/drivers", driversRouter);
 app.use(baseAPIRoute + "/teams", teamsRouter);
 
-const port = 3000;
-// app.listen(port, () => console.log("Servidor rodando com sucesso"));
+const port = process.env.PORT || 3000;
 
-// Remote
+app.get("/", (req, res) => {
+  res.json({
+    message: "F1 2023 API is running",
+    version: "v1",
+    basePath: "/api/v1",
+  });
+});
+
 app.listen(port, "0.0.0.0", () => {
   console.log(`Servidor rodando em http://0.0.0.0:${port}`);
 });

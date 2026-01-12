@@ -12,7 +12,7 @@ const router = express.Router();
 sortData(drivers);
 
 router.get("/", (req, res) => {
-  res.status(200).send(drivers);
+  res.status(201).send(drivers);
 });
 
 router.get("/:id", (req, res) => {
@@ -24,7 +24,7 @@ router.get("/:id", (req, res) => {
     return;
   }
 
-  res.status(200).send(selectedDriver);
+  res.status(201).send(selectedDriver);
 });
 
 router.get("/standings/:position", (req, res) => {
@@ -39,7 +39,7 @@ router.get("/standings/:position", (req, res) => {
   }
 
   const selectedDriver = drivers[position - 1];
-  res.status(200).send(selectedDriver);
+  res.status(201).send(selectedDriver);
 });
 
 router.post("", (req, res) => {
@@ -53,7 +53,7 @@ router.post("", (req, res) => {
   const newDriver = { ...req.body, id: randomUUID() };
   drivers.push(newDriver);
   sortData(drivers);
-  res.status(200).send(newDriver);
+  res.status(201).send(newDriver);
 });
 
 router.put("/:id", (req, res) => {
@@ -72,12 +72,12 @@ router.put("/:id", (req, res) => {
   }
 
   for (const key in selectedDriver) {
-    if (req.body[key]) {
+    if (req.body[key] !== undefined) {
       selectedDriver[key] = req.body[key];
     }
   }
   sortData(drivers);
-  res.status(200).send(selectedDriver);
+  res.status(201).send(selectedDriver);
 });
 
 router.delete("/:id", (req, res) => {
@@ -92,7 +92,7 @@ router.delete("/:id", (req, res) => {
   const index = drivers.indexOf(selectedDriver);
   drivers.splice(index, 1);
 
-  res.status(200).send(selectedDriver);
+  res.status(201).send(selectedDriver);
 });
 
 export default router;
