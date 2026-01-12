@@ -50,7 +50,7 @@ sortData(drivers);
  *     summary: Lista todos os pilotos
  *     tags: [Drivers]
  *     responses:
- *       201:
+ *       200:
  *         description: Lista de pilotos ordenada por pontos
  *         content:
  *           application/json:
@@ -60,7 +60,7 @@ sortData(drivers);
  *                 $ref: '#/components/schemas/Driver'
  */
 router.get("/", (req, res) => {
-  res.status(201).send(drivers);
+  res.status(200).send(drivers);
 });
 
 /**
@@ -76,7 +76,7 @@ router.get("/", (req, res) => {
  *         schema:
  *           type: string
  *     responses:
- *       201:
+ *       200:
  *         description: Piloto encontrado
  *       404:
  *         description: Piloto não encontrado
@@ -90,7 +90,7 @@ router.get("/:id", (req, res) => {
     return;
   }
 
-  res.status(201).send(selectedDriver);
+  res.status(200).send(selectedDriver);
 });
 
 /**
@@ -107,7 +107,7 @@ router.get("/:id", (req, res) => {
  *           type: integer
  *           minimum: 1
  *     responses:
- *       201:
+ *       200:
  *         description: Piloto encontrado na posição
  *       400:
  *         description: Posição inválida
@@ -123,7 +123,7 @@ router.get("/standings/:position", (req, res) => {
   }
 
   const selectedDriver = drivers[position - 1];
-  res.status(201).send(selectedDriver);
+  res.status(200).send(selectedDriver);
 });
 
 /**
@@ -177,7 +177,7 @@ router.post("", (req, res) => {
  *           schema:
  *             $ref: '#/components/schemas/Driver'
  *     responses:
- *       201:
+ *       200:
  *         description: Piloto atualizado
  *       404:
  *         description: Piloto não encontrado
@@ -203,7 +203,7 @@ router.put("/:id", (req, res) => {
     }
   }
   sortData(drivers);
-  res.status(201).send(selectedDriver);
+  res.status(200).send(selectedDriver);
 });
 
 /**
@@ -219,7 +219,7 @@ router.put("/:id", (req, res) => {
  *         schema:
  *           type: string
  *     responses:
- *       201:
+ *       200:
  *         description: Piloto removido
  *       404:
  *         description: Piloto não encontrado
@@ -236,7 +236,7 @@ router.delete("/:id", (req, res) => {
   const index = drivers.indexOf(selectedDriver);
   drivers.splice(index, 1);
 
-  res.status(201).send(selectedDriver);
+  res.status(200).send(selectedDriver);
 });
 
 export default router;

@@ -32,7 +32,7 @@ const router = express.Router();
  *     summary: Retorna a classificação das equipes
  *     tags: [Teams]
  *     responses:
- *       201:
+ *       200:
  *         description: Lista de equipes ordenadas por pontos
  *         content:
  *           application/json:
@@ -42,7 +42,7 @@ const router = express.Router();
  *                 $ref: '#/components/schemas/Team'
  */
 router.get("/", (req, res) => {
-  res.status(201).send(sortData(generateTeamsArray()));
+  res.status(200).send(sortData(generateTeamsArray()));
 });
 
 /**
@@ -59,7 +59,7 @@ router.get("/", (req, res) => {
  *           type: integer
  *           minimum: 1
  *     responses:
- *       201:
+ *       200:
  *         description: Equipe encontrada
  *       400:
  *         description: Posição inválida
@@ -76,7 +76,7 @@ router.get("/standings/:position", (req, res) => {
   }
 
   const selectedTeam = teams[position - 1];
-  res.status(201).send(selectedTeam);
+  res.status(200).send(selectedTeam);
 });
 
 export default router;
